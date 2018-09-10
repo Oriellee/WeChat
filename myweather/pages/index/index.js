@@ -23,7 +23,7 @@ Page({
   onLoad() {
     this.getNow()
   },
-  onPullDownRefresh: function() {
+  onPullDownRefresh() {
     this.getNow(() => {
       wx.stopPullDownRefresh()
     })

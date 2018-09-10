@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.0.4",
 	"appid": "wx5796be0050bd7e26",
-	"projectname": "wechatwork",
+	"projectname": "douban",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
