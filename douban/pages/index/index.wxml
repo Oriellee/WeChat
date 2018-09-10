@@ -1,0 +1,45 @@
+<!-- index.wxml -->
+<!-- <view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取             头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  <view class="usermotto">
+    <butto bindgetuserinfo="showinfo">测试</button>
+  </view>
+</view> -->
+<view class='box'>
+  <view class='top_search'>
+    <input auto-focus placeholder='{{input_placeholder}}' />
+    <view class='img_box'>
+      <icon type="waiting" />
+    </view>
+  </view>
+  <view class='list_box'>
+    <view class='list_child' wx:for="{{list_data}}">
+      <view class='top_title'>
+        <view class='green_line'></view>
+        <text class='list_title'>{{item.title}}</text>
+        <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">
+          {{goto}}
+        </navigator>
+      </view>
+      <scroll-view scroll-x="true" class='scroll_box'>
+        <view class='img_list' wx:for="{{item.index_list}}" wx:for-item="j" wx:for-index="j_index">
+          <image src="{{'../../img/'+j.name+'.jpg'}}"></image>
+          <text>{{j.name}}</text>
+          <view>
+            <image class='star_img bigstar{{j.fraction*10}}' src="{{'../../img/ic_rating_m.png'}}"></image>
+          </view>
+        </view>
+      </scroll-view>
+
+    </view>
+  </view>
+</view>

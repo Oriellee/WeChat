@@ -1,0 +1,43 @@
+.bigstar50 {
+  margin-top: 0px;
+}
+
+.bigstar45 {
+  margin-top: -10px;
+}
+
+.bigstar40 {
+  margin-top: -20px;
+}
+
+.bigstar35 {
+  margin-top: -30px;
+}
+
+.bigstar30 {
+  margin-top: -40px;
+}
+
+.bigstar25 {
+  margin-top: -50px;
+}
+
+.bigstar20 {
+  margin-top: -60px;
+}
+
+.bigstar15 {
+  margin-top: -70px;
+}
+
+.bigstar10 {
+  margin-top: -80px;
+}
+
+.bigstar05 {
+  margin-top: -90px;
+}
+
+.bigstar00 {
+  margin-top: -100px;
+}

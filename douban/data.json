@@ -1,0 +1,172 @@
+{
+  "data": [
+    {
+      "title": "近期上映",
+      "url": "near",
+      "index_list": [
+        {
+          "img": "img/选中.png",
+          "name":"西红柿首付",
+          "fraction":"6"
+        },{
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },{
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },{
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },{
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        }
+      ],
+      "all_list":[
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        }
+      ]
+    },{
+      "title": "热门电影",
+      "url": "near",
+      "index_list": [
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        }
+      ],
+      "all_list": [
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        }
+      ]
+    },{
+      "title": "电视剧",
+      "url": "near",
+      "index_list": [
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        }
+      ],
+      "all_list": [
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        },
+        {
+          "img": "img/选中.png",
+          "name": "西红柿首付",
+          "fraction": "6"
+        }
+      ]
+    }
+  ]
+}
