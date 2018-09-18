@@ -18,7 +18,10 @@ Page({
   data: {
     nowTemp: "",
     nowWeather: "",
-    newWeatherBackground: ""
+    newWeatherBackground: "",
+    hourlyWeather: [],
+    todayTemp: "",
+    todayDate: ""
   },
   onLoad() {
     this.getNow()
@@ -36,22 +39,56 @@ Page({
       },
       success: res => {
         let result = res.data.result;
-        let temp = result.now.temp;
-        let weather = result.now.weather;
-        this.setData({
-          nowTemp: temp + "°",
-          nowWeather: weatherMap[weather],
-          newWeatherBackground: "/images/" + weather + "-bg.png"
-        })
-        wx.setNavigationBarColor({
-          frontColor: '#000000',
-          backgroundColor: weatherColorMap[weather]
-        })
+        this.setNow(result)
+        this.setHourlyWeather(result)
+        this.setToday(result)
       },
-      complete:res=>{
+      complete: res => {
         callback && callback()
       }
     })
+  },
+  setNow(result) {
+    let temp = result.now.temp;
+    let weather = result.now.weather;
+    wx.setNavigationBarColor({
+      frontColor: '#000000',
+      backgroundColor: weatherColorMap[weather]
+    })
+    this.setData({
+      nowTemp: temp + "°",
+      nowWeather: weatherMap[weather],
+      newWeatherBackground: "/images/" + weather + "-bg.png",
+    })
+  },
+  setHourlyWeather(result) {
+    let forecast = result.forecast;
+    let nowHour = new Date().getHours()
+    let hourlyWeather = []
+    for (let i = 0; i < 8; i++) {
+      hourlyWeather.push({
+        time: (i * 3 + nowHour) % 24 + "时",
+        iconPath: '/images/' + forecast[i].weather + '-icon.png',
+        temp: forecast[i].temp + '°'
+      })
+    }
+    hourlyWeather[0].time = "现在"
+    this.setData({
+      hourlyWeather: hourlyWeather
+    })
+  },
+  setToday(result){
+    let date = new Date()
+    console.log(new Date())
+    this.setData({
+      todayTemp: `${result.today.minTemp}° - ${result.today.maxTemp}°`,
+      todayDate: `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} 今天`
+    })
+  },
+  onTapDayWeather(){
+   wx.navigateTo({
+     url: '/pages/list/list'
+   })
   }
 
 })
