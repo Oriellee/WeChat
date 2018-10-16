@@ -12,7 +12,7 @@
 <view class="user-card" wx:else>
   <view class="user-info">
     <image class="user-head" src="{{userInfo.avatarUrl}}"></image>
-    <view class="user-name">{{userInfo.nickName}}</view>
+    <view class="user-name">aa{{userInfo.nickName}}</view>
   </view>
   <view class="user-split"></view>
   <view class="user-options">

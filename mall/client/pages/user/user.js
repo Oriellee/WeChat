@@ -21,15 +21,45 @@ Page({
     })
   },
   onTapLogin(){
-    qcloud.setLoginUrl(config.service.loginUrl)
+   this.doQcloudLogin({success: (userInfo) => {
+     this.setData({
+       userInfo
+     })
+   }})
+  },
+  doQcloudLogin({success,error}){
     qcloud.login({
-      success: result => {
-        console.log('success')
-        console.log(result)
+      success:result => {
+        if(result){
+          let userInfo = result
+          success && success({
+            userInfo
+          })
+        }else{
+          this.getUserInfo({success,error})
+        }
+      },fail :() =>{
+        error && error()
+      }
+    })
+  },
+  getUserInfo({success,error}){
+    qcloud.request({
+      url:config.service.requestUrl,
+      login:true,
+      success:result =>{
+        let data = result.data
+        if(!data.code){
+          let userInfo = data.data
+          success && success({
+            userInfo
+          })
+        }else{
+          error && error()
+        }
       },
-      fail: result => {
-        console.log('fail')
-        console.log(result)
+      fail :() => {
+        error && error()
       }
     })
   },
