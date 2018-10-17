@@ -1,31 +1,93 @@
-const qcloud = require('../../vendor/wafer2-client-sdk/index')
-const config = require('../../config.js')
+//
+var qcloud = require('../../vendor/wafer2-client-sdk/index')
+var config = require('../../config')
+
+var pageUserInfo = null;
+
+const UNPROMPTED = 0
+const UNAUTHORIZED = 1
+const AUTHORIZED = 2
+
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
     userInfo: null,
-    // userInfo: {
-    //   nickName: "优达学城",
-    //   avatarUrl: "", // 头像 URL 地址
-    // }, // 虚拟数据
+    locationAuthType: UNPROMPTED
   },
+
   onTapAddress() {
     wx.showToast({
       icon: 'none',
       title: '此功能暂未开放'
     })
   },
+
   onTapKf() {
     wx.showToast({
       icon: 'none',
       title: '此功能暂未开放'
     })
   },
-  onTapLogin(){
-   this.doQcloudLogin({success: (userInfo) => {
-     this.setData({
-       userInfo
-     })
-   }})
+
+  /**
+ * 生命周期函数--监听页面加载
+ */
+  onLoad: function (options) {
+    this.checkSession({
+      success: ({userInfo}) => {
+        this.setData({
+          userInfo: userInfo
+        })
+      }, error: () => { }
+    })
+  },
+  checkSession({ success, error }) {
+    if(pageUserInfo){
+      success && success({
+        pageUserInfo
+      })
+    }else{
+      wx.checkSession({
+        success: () => {
+          this.getUserInfo({ success, error })
+        }, fail: () => {
+          error && error()
+        }
+      })
+    }
+  },
+  onTapLogin: function () {
+    this.login({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo:userInfo
+        })
+      }
+    })
+  },
+  login({success,error}){
+    wx.getSetting({
+      success :res => {
+        if(res.authSetting['scope.userInfo'] == false){
+          this.setData({
+            locationAuthType:UNAUTHORIZED
+          })
+          wx.showModal({
+            title: '提示',
+            content: '请授权我们获取您的用户信息',
+            showCancel:false
+          })
+        }else{
+          this.setData({
+            locationAuthType:AUTHORIZED
+          })
+          this.doQcloudLogin({success,error})
+        }
+      }
+    })
   },
   doQcloudLogin({success,error}){
     qcloud.login({
@@ -44,31 +106,34 @@ Page({
     })
   },
   getUserInfo({success,error}){
-    qcloud.request({
-      url:config.service.requestUrl,
-      login:true,
-      success:result =>{
-        let data = result.data
-        if(!data.code){
-          let userInfo = data.data
-          success && success({
-            userInfo
-          })
-        }else{
+    if (pageUserInfo){
+      success && success({
+        pageUserInfo
+      })
+    }else{
+      qcloud.request({
+        url: config.service.requestUrl,
+        login: true,
+        success: result => {
+          let data = result.data
+          if (!data.code) {
+            let userInfo = data.data
+            pageUserInfo = data.data
+            success && success({
+              userInfo
+            })
+          } else {
+            error && error()
+          }
+        },
+        fail: () => {
           error && error()
         }
-      },
-      fail :() => {
-        error && error()
-      }
-    })
+      })
+    }
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
 
-  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
