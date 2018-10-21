@@ -1,11 +1,52 @@
 // pages/order/order.js
+const qcloud = require('../../vendor/wafer2-client-sdk/index')
+const config = require('../../config')
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo: null,
+    locationAuthType: app.data.locationAuthType,
+    orderList: [
+      {
+        id: 0,
+        list: [{
+          count: 1,
+          image: '填入任意你之前上传到腾讯云的图片链接',
+          name: '商品1',
+          price: 50.5,
+        }]
+      },
+      {
+        id: 1,
+        list: [{
+          count: 1,
+          image: '填入任意你之前上传到腾讯云的图片链接',
+          name: '商品1',
+          price: 50.5,
+        },
+        {
+          count: 1,
+          image: '填入任意你之前上传到腾讯云的图片链接',
+          name: '商品2',
+          price: 50.5,
+        }
+        ]
+      },
+      {
+        id: 2,
+        list: [{
+          count: 1,
+          image: '填入任意你之前上传到腾讯云的图片链接',
+          name: '商品2',
+          price: 50.5,
+        }]
+      }
+    ], // 订单列表
   },
 
   /**
@@ -13,6 +54,22 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+
+  onTapLogin: function () {
+    app.login({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo,
+          locationAuthType: app.data.locationAuthType
+        })
+      },
+      error: () => {
+        this.setData({
+          locationAuthType: app.data.locationAuthType
+        })
+      }
+    })
   },
 
   /**
@@ -26,7 +83,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 同步授权状态
+    this.setData({
+      locationAuthType: app.data.locationAuthType
+    })
+    app.checkSession({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo
+        })
+      }
+    })
   },
 
   /**
