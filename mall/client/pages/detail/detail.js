@@ -13,7 +13,6 @@ Page({
       url: config.service.productDetail + id,
       success: result => {
         wx.hideLoading(result)
-        console.log()
         if (!result.data.code) {
           this.setData({
             product: result.data.data
@@ -38,6 +37,40 @@ Page({
   },
   onLoad: function (options) {
     this.getProduct(options.id);
+  },
+  buy(){
+    wx.showLoading({
+      title: '商品购买中...',
+    })
+    let product = Object.assign({count:1},this.data.product)
+
+    qcloud.request({
+      url:config.service.addOrder,
+      login:true,
+      method:'POST',
+      data:{
+        list:[product]
+      },
+      success: result => {
+        wx.hideLoading()
+        let data = result.data
+        if(!data.code){
+          wx.showToast({
+            title: '商品购买成功',
+          })
+        }else{
+          wx.showToast({
+            title: '商品购买失败',
+          })
+        }
+      },fail :() => {
+        wx.hideLoading()
+        wx.showToast({
+          icon:"none",
+          title: '商品购买失败',
+        })
+      }
+    })
   },
 
 

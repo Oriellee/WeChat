@@ -1,8 +1,8 @@
 {
-	"client": "./client",
-	"svr": "./server",
-	"miniprogramRoot": "./client",
-	"qcloudRoot": "./server",
+	"client": "client/",
+	"svr": "server/",
+	"miniprogramRoot": "client/",
+	"qcloudRoot": "server/",
 	"setting": {
 		"newFeature": true
 	},
@@ -25,18 +25,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": -1,
 			"list": [
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/user/user",
+					"query": ""
+				},
 				{
 					"id": -1,
 					"name": "商品详情页",
 					"pathName": "pages/detail/detail",
 					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "个人中心",
-					"pathName": "pages/user/user"
 				}
 			]
 		}

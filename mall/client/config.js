@@ -25,6 +25,9 @@ var config = {
 
     productList: `${host}/weapp/product`,
     productDetail: `${host}/weapp/product/`,
+
+    // 创建订单
+    addOrder: `${host}/weapp/order`,
   }
 };
 
