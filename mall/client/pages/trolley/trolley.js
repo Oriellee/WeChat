@@ -1,4 +1,6 @@
 // pages/trolley/trolley.js
+const qcloud = require('../../vendor/wafer2-client-sdk/index')
+const config = require('../../config')
 const app = getApp()
 
 Page({
@@ -8,7 +10,12 @@ Page({
    */
   data: {
     userInfo: null,
-    locationAuthType: app.data.locationAuthType
+    locationAuthType: app.data.locationAuthType,
+    trolleyList: [], // 购物车商品列表
+    trolleyCheckMap: [], // 购物车中选中的id哈希表
+    trolleyAccount: 45, // 购物车结算总价
+    isTrolleyEdit: false, // 购物车是否处于编辑状态
+    isTrolleyTotalCheck: true, // 购物车中商品是否全选
   },
 
   /**
@@ -16,6 +23,36 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  getTrolley() {
+    wx.showLoading({
+      title: '刷新购物车数据...',
+    })
+    qcloud.request({
+      url: config.service.trolleyList,
+      login: true,
+      success: result => {
+        wx.hideLoading()
+        let data = result.data
+        if (!data.code) {
+          this.setData({
+            trolleyList: data.data
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '数据刷新失败',
+          })
+        }
+      },
+      fail: () => {
+        wx.hideLoading()
+        wx.showToast({
+          icon: 'none',
+          title: '数据刷新失败',
+        })
+      }
+    })
   },
 
   onTapLogin: function () {
@@ -25,6 +62,7 @@ Page({
           userInfo,
           locationAuthType: app.data.locationAuthType
         })
+        this.getTrolley()
       },
       error: () => {
         this.setData({
@@ -54,6 +92,7 @@ Page({
         this.setData({
           userInfo
         })
+        this.getTrolley()
       }
     })
   },
