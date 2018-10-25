@@ -34,7 +34,7 @@ module.exports = {
     let ret = []
     let cacheMap = {}
     let block = []
-
+console.log(order)
     list.forEach(order => {
       if (!cacheMap[order.id]) {
         block = []
