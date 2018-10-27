@@ -13,7 +13,7 @@ Page({
     locationAuthType: app.data.locationAuthType,
     trolleyList: [], // 购物车商品列表
     trolleyCheckMap: [], // 购物车中选中的id哈希表
-    trolleyAccount: 45, // 购物车结算总价
+    trolleyAccount: 0, // 购物车结算总价
     isTrolleyEdit: false, // 购物车是否处于编辑状态
     isTrolleyTotalCheck: false, // 购物车中商品是否全选
   },
@@ -23,6 +23,143 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  calcAccount(trolleyList, trolleyCheckMap) {
+    let account = 0
+    trolleyList.forEach(product => {
+      account = trolleyCheckMap[product.id] ? account + product.price * product.count : account
+    })
+    return account
+  },
+  onTapEditTrolley() {
+    let isTrolleyEdit = this.data.isTrolleyEdit
+    if (isTrolleyEdit) {
+      this.updateTrolley()
+    } else {
+      this.setData({
+        isTrolleyEdit: !isTrolleyEdit
+      })
+    }
+  },
+  adjustTrolleyProductCount(event) {
+    let trolleyCheckMap = this.data.trolleyCheckMap
+    let trolleyList = this.data.trolleyList
+    let dataset = event.currentTarget.dataset
+    let adjustType = dataset.type
+    let productId = dataset.id
+    let product
+    let index
+    for (index = 0; index < trolleyList.length; index++) {
+      if (productId === trolleyList[index].id) {
+        product = trolleyList[index]
+        break
+      }
+    }
+    if (product) {
+      if (adjustType === 'add') {
+        // 点击加号
+        product.count++
+      } else {
+        // 点击减号
+        if (product.count <= 1) {
+          // 商品数量不超过1，点击减号相当于删除
+          delete trolleyCheckMap[productId]
+          trolleyList.splice(index, 1)
+        } else {
+          // 商品数量大于1
+          product.count--
+        }
+      }
+    }
+    // 调整结算总价
+    let trolleyAccount = this.calcAccount(trolleyList, trolleyCheckMap)
+    if (!trolleyList.length) {
+      // 当购物车为空，自动同步至服务器
+      this.updateTrolley()
+    }
+    this.setData({
+      trolleyAccount,
+      trolleyList,
+      trolleyCheckMap
+    })
+  },
+  updateTrolley() {
+    wx.showLoading({
+      title: '更新购物车数据...',
+    })
+    let trolleyList = this.data.trolleyList
+    qcloud.request({
+      url: config.service.updateTrolley,
+      method: 'POST',
+      login: true,
+      data: {
+        list: trolleyList
+      },
+      success: result => {
+        wx.hideLoading()
+        let data = result.data
+        if (!data.code) {
+          this.setData({
+            isTrolleyEdit: false
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '更新购物车失败'
+          })
+        }
+      },
+      fail: () => {
+        wx.hideLoading()
+        wx.showToast({
+          icon: 'none',
+          title: '更新购物车失败'
+        })
+      }
+    })
+  },
+  onTapPay() {
+    if (!this.data.trolleyAccount) return
+    wx.showLoading({
+      title: '结算中...',
+    })
+    let trolleyCheckMap = this.data.trolleyCheckMap
+    let trolleyList = this.data.trolleyList
+    let needToPayProductList = trolleyList.filter(product => {
+      return !!trolleyCheckMap[product.id]
+    })
+    // 请求后台
+    qcloud.request({
+      url: config.service.addOrder,
+      login: true,
+      method: 'POST',
+      data: {
+        list: needToPayProductList,
+        isInstantBuy: true
+      },
+      success: result => {
+        wx.hideLoading()
+        let data = result.data
+        if (!data.code) {
+          wx.showToast({
+            title: '结算成功',
+          })
+          this.getTrolley()
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '结算失败',
+          })
+        }
+      },
+      fail: () => {
+        wx.hideLoading()
+        wx.showToast({
+          icon: 'none',
+          title: '结算失败',
+        })
+      }
+    })
   },
   getTrolley() {
     wx.showLoading({
@@ -76,6 +213,7 @@ Page({
     let trolleyCheckMap = this.data.trolleyCheckMap
     let trolleyList = this.data.trolleyList
     let isTrolleyTotalCheck = this.data.isTrolleyTotalCheck
+    let trolleyAccount = this.data.trolleyAccount
     let numTotalProduct
     let numCheckedProduct = 0
     // 单项商品被选中/取消
@@ -86,7 +224,9 @@ Page({
       numCheckedProduct = checked ? numCheckedProduct + 1 : numCheckedProduct
     })
     isTrolleyTotalCheck = (numTotalProduct === numCheckedProduct) ? true : false
+    trolleyAccount = this.calcAccount(trolleyList, trolleyCheckMap)
     this.setData({
+      isTrolleyTotalCheck,
       trolleyCheckMap,
       isTrolleyTotalCheck
     })
