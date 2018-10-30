@@ -4,6 +4,7 @@ Page({
 
   data: {
     product: {},
+    haveComment: true
   },
   getProduct(id) {
     wx.showLoading({
@@ -14,9 +15,15 @@ Page({
       success: result => {
         wx.hideLoading(result)
         if (!result.data.code) {
+          console.log(result.data.data)
           this.setData({
             product: result.data.data
           })
+          if (result.data.data.commentCount < 1) {
+            this.setData({
+              haveComment: false
+            })
+          }
         } else {
           wx.showToast({
             title: '商品信息加载失败。',
@@ -35,39 +42,50 @@ Page({
       }
     })
   },
-  onLoad: function (options) {
+  onTapCommentEntry() {
+    let product = this.data.product
+    if (this.data.haveComment) {
+      wx.navigateTo({
+        url: `/pages/comment/comment?id=${product.id}&price=${product.price}&name=${product.name}&image=${product.image}`
+      })
+    }
+  },
+  onLoad: function(options) {
     this.getProduct(options.id);
   },
-  buy(){
+  buy() {
     wx.showLoading({
       title: '商品购买中...',
     })
-    let product = Object.assign({count:1},this.data.product)
+    let product = Object.assign({
+      count: 1
+    }, this.data.product)
 
     qcloud.request({
-      url:config.service.addOrder,
-      login:true,
-      method:'POST',
-      data:{
-        list:[product],
+      url: config.service.addOrder,
+      login: true,
+      method: 'POST',
+      data: {
+        list: [product],
         isInstantBuy: true
       },
       success: result => {
         wx.hideLoading()
         let data = result.data
-        if(!data.code){
+        if (!data.code) {
           wx.showToast({
             title: '商品购买成功',
           })
-        }else{
+        } else {
           wx.showToast({
             title: '商品购买失败',
           })
         }
-      },fail :() => {
+      },
+      fail: () => {
         wx.hideLoading()
         wx.showToast({
-          icon:"none",
+          icon: "none",
           title: '商品购买失败',
         })
       }
@@ -81,7 +99,9 @@ Page({
       url: config.service.addTrolley,
       login: true,
       method: 'PUT',
-      data: {id:this.data.product.id},
+      data: {
+        id: this.data.product.id
+      },
       success: result => {
         wx.hideLoading()
         let data = result.data
@@ -110,49 +130,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

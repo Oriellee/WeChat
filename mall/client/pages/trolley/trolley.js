@@ -135,7 +135,7 @@ Page({
       method: 'POST',
       data: {
         list: needToPayProductList,
-        isInstantBuy: true
+        isInstantBuy: false
       },
       success: result => {
         wx.hideLoading()
@@ -228,22 +228,29 @@ Page({
     this.setData({
       isTrolleyTotalCheck,
       trolleyCheckMap,
-      isTrolleyTotalCheck
+
+
+
+      isTrolleyTotalCheck,
+      trolleyAccount
     })
   },
   onTapCheckTotal(event) {
     let trolleyCheckMap = this.data.trolleyCheckMap
     let trolleyList = this.data.trolleyList
     let isTrolleyTotalCheck = this.data.isTrolleyTotalCheck
+    let trolleyAccount = this.data.trolleyAccount
     // 全选按钮被选中/取消
     isTrolleyTotalCheck = !isTrolleyTotalCheck
     // 遍历并修改所有商品的状态
     trolleyList.forEach(product => {
       trolleyCheckMap[product.id] = isTrolleyTotalCheck
     })
+    trolleyAccount = this.calcAccount(trolleyList, trolleyCheckMap)
     this.setData({
       isTrolleyTotalCheck,
-      trolleyCheckMap
+      trolleyCheckMap,
+      trolleyAccount
     })
   },
   /**
