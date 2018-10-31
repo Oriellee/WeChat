@@ -15,7 +15,6 @@ Page({
       success: result => {
         wx.hideLoading(result)
         if (!result.data.code) {
-          console.log(result.data.data)
           this.setData({
             product: result.data.data
           })

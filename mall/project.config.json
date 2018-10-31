@@ -4,6 +4,10 @@
 	"miniprogramRoot": "client/",
 	"qcloudRoot": "server/",
 	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
 		"newFeature": true
 	},
 	"appid": "wx5796be0050bd7e26",
@@ -25,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -37,6 +41,12 @@
 					"id": -1,
 					"name": "商品详情页",
 					"pathName": "pages/detail/detail",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "添加评论",
+					"pathName": "pages/add-comment/add-comment/1",
 					"query": ""
 				}
 			]
