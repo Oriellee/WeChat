@@ -1,7 +1,5 @@
 <view class='container'>
-  <view class='{{logged ? "user-info add-bg":"user-info" }}'>
-    <image class='user-image' src="{{logged ? userInfo.avatarUrl : '../../images/user-unlogin.png'}}" background-size="cover"></image>
-    <button class="user-name nologin-name" wx-if='{{!logged}}'  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">未登录</button>
-    <view wx-else class='user-name'>{{userInfo.nickName}}</view>
-</view>
+  <view class='movie-box'>
+    <view class='list' wx:for="{{movie_list}}">{{item.name}}</view>
+  </view>
 </view>
