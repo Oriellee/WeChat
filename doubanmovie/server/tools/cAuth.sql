@@ -5,7 +5,7 @@
  Source Server Type    : MySQL
  Source Server Version : 50717
  Source Host           : localhost
- Source Database       : cAuth
+ Source Database       : douban
 
  Target Server Type    : MySQL
  Target Server Version : 50717
