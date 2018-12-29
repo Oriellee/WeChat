@@ -1,6 +1,6 @@
-var qcloud = require('../../vendor/wafer2-client-sdk/index')
-var config = require('../../config')
-var util = require('../../utils/util.js')
+var qcloud = require('../../vendor/wafer2-client-sdk/index');
+var config = require('../../config');
+var util = require('../../utils/util.js');
 
 Page({
 
@@ -8,23 +8,41 @@ Page({
    * 页面的初始数据
    */
   data: {
-    movie_list:[]
+    movieList:[]
   },
-  get_movie_list(){
-    wx.request({
-      url: 'https://api.douban.com/v2/movie/in_theaters',
-      success:result => {
-        console.log(result.data)
-        this.movie_list = result.data;
-      }
-    })
-  },
+  getMovieList() {
+        wx.showLoading({
+            title: '信息加载中',
+        });
+        qcloud.request({
+            url: config.service.movieList,
+            success: result => {
+                wx.hideLoading();
+                if (!result.data.code) {
+                    this.setData({
+                        movieList: result.data.data
+                    })
+                } else {
+                    wx.showToast({
+                        title: '信息加载失败。',
+                    })
+                }
+
+            },
+            fail: result => {
+                wx.hideLoading();
+                wx.showToast({
+                    title: '信息加载失败。',
+                })
+            }
+        })
+    },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.get_movie_list();
+    this.getMovieList();
   },
 
   /**
@@ -75,4 +93,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-})
+});

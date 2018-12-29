@@ -1,5 +1,29 @@
 <view class='container'>
-  <view class='movie-box'>
-    <view class='list' wx:for="{{movie_list}}">{{item.name}}</view>
-  </view>
+    <view class='search-box'>
+        <view>
+            <image src='/images/search.png'></image>
+            <text>搜索</text>
+        </view>
+    </view>
+    <view class='movie-box'>
+        <view class='list-child' wx:for="{{list_data}}">
+            <view class='top-title'>
+                <view class='green-line'></view>
+                <text class='list-title'>{{item.title}}</text>
+                <navigator url="{{'/page/navigate/navigate?title='+item.type}}" hover-class="navigator-hover">
+                    查看更多 >
+                </navigator>
+            </view>
+            <scroll-view scroll-x="true" class='scroll-box'>
+                <view class='img-list' wx:for="{{item.list}}" wx:for-item="child" wx:for-index="child_index">
+                    <image src="{{child.cover}}"></image>
+                    <text>{{child.title}}</text>
+                    <view>
+                        <image class='star_img bigstar{{child.rate*10}}' src="{{'../../img/ic_rating_m.png'}}"></image>
+                    </view>
+                </view>
+            </scroll-view>
+
+        </view>
+    </view>
 </view>

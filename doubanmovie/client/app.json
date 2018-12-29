@@ -1,7 +1,5 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/addCgi/addCgi",
     "pages/home/home",
     "pages/movie/movie",
     "pages/my/my"
@@ -16,12 +14,6 @@
   "tabBar": {
     "backgroundColor": "#ffffff",
     "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "示例",
-        "iconPath": "images/home.png",
-        "selectedIconPath": "images/home-sel.png"
-      },
       {
         "pagePath": "pages/home/home",
         "text": "首页",

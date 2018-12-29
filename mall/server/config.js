@@ -9,7 +9,7 @@ const CONF = {
   appSecret: 'faf904f3be0cc1c5cf6c4ec82555facf',
 
   // 是否使用腾讯云代理登录小程序
-  useQcloudLogin: true,
+  useQcloudLogin: false,
 
   /**
    * MySQL 配置，用来存储 session 和用户信息

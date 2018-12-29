@@ -32,4 +32,10 @@ router.get('/message', controllers.message.get)
 // POST 用来处理微信转发过来的客服消息
 router.post('/message', controllers.message.post)
 
+// 商品添加到购物车列表
+router.get('/movieList', validationMiddleware, controllers.movie.movieList)
+
+// // GET  获取首页电影列表。
+// router.get('/list', controllers.list.get)
+
 module.exports = router
