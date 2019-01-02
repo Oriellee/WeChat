@@ -12,7 +12,7 @@ Page({
   },
   getMovieList() {
         wx.showLoading({
-            title: '信息加载中',
+            title: '列表加载中',
         });
         qcloud.request({
             url: config.service.movieList,
@@ -24,7 +24,7 @@ Page({
                     })
                 } else {
                     wx.showToast({
-                        title: '信息加载失败。',
+                        title: '列表加载失败。',
                     })
                 }
 
@@ -32,7 +32,7 @@ Page({
             fail: result => {
                 wx.hideLoading();
                 wx.showToast({
-                    title: '信息加载失败。',
+                    title: '列表加载失败。',
                 })
             }
         })

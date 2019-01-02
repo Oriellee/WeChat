@@ -1,4 +1,4 @@
-<view class='container'>
+<view class='box'>
     <view class='search-box'>
         <view>
             <image src='/images/search.png'></image>
@@ -6,24 +6,27 @@
         </view>
     </view>
     <view class='movie-box'>
-        <view class='list-child' wx:for="{{list_data}}">
+        <view class='list-child' wx:for="{{movieList}}" wx:key="item.type">
             <view class='top-title'>
-                <view class='green-line'></view>
-                <text class='list-title'>{{item.title}}</text>
-                <navigator url="{{'/page/navigate/navigate?title='+item.type}}" hover-class="navigator-hover">
+                <view>
+                    <view class='green-line'></view>
+                    <text class='list-title'>{{item.type}}</text>
+                </view>
+                <navigator url="/pages/typeList/typeList?type={{item.type}}" hover-class="navigator-hover">
                     查看更多 >
                 </navigator>
             </view>
             <scroll-view scroll-x="true" class='scroll-box'>
-                <view class='img-list' wx:for="{{item.list}}" wx:for-item="child" wx:for-index="child_index">
+                <view class='img-list' wx:for="{{item.list}}" wx:for-item="child" wx:for-index="child_index" wx:key="child.movieId">
                     <image src="{{child.cover}}"></image>
                     <text>{{child.title}}</text>
                     <view>
-                        <image class='star_img bigstar{{child.rate*10}}' src="{{'../../img/ic_rating_m.png'}}"></image>
+                        <image class='star-img bigstar{{child.rate[2]>=5?child.rate[0]*10+5:child.rate[0]*10}}'
+                               src="{{'../../images/ic_rating_m.png'}}"></image>
                     </view>
+                    <text>{{child.rate}}</text>
                 </view>
             </scroll-view>
-
         </view>
     </view>
 </view>

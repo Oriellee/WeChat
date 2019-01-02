@@ -39,6 +39,54 @@ function list_fun() {
         "img": "img/选中.png",
         "name": "风语咒",
         "fraction": "4.0"
+      }, {
+        "img": "img/选中.png",
+        "name": "小偷家族",
+        "fraction": "4.5"
+      }, {
+        "img": "img/选中.png",
+        "name": "狄仁杰",
+        "fraction": "3.0"
+      }, {
+        "img": "img/选中.png",
+        "name": "风语咒",
+        "fraction": "4.0"
+      }, {
+        "img": "img/选中.png",
+        "name": "小偷家族",
+        "fraction": "4.5"
+      }, {
+        "img": "img/选中.png",
+        "name": "狄仁杰",
+        "fraction": "3.0"
+      }, {
+        "img": "img/选中.png",
+        "name": "风语咒",
+        "fraction": "4.0"
+      }, {
+        "img": "img/选中.png",
+        "name": "小偷家族",
+        "fraction": "4.5"
+      }, {
+        "img": "img/选中.png",
+        "name": "狄仁杰",
+        "fraction": "3.0"
+      }, {
+        "img": "img/选中.png",
+        "name": "风语咒",
+        "fraction": "4.0"
+      }, {
+        "img": "img/选中.png",
+        "name": "小偷家族",
+        "fraction": "4.5"
+      }, {
+        "img": "img/选中.png",
+        "name": "狄仁杰",
+        "fraction": "3.0"
+      }, {
+        "img": "img/选中.png",
+        "name": "风语咒",
+        "fraction": "4.0"
       }],
       "all_list": [{
           "img": "img/选中.png",

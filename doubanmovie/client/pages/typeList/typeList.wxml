@@ -1,0 +1,13 @@
+<scroll-view class="box" scroll-y="true">
+    <view class="scroll-box">
+        <view class='movie-box' wx:for="{{data.list}}" wx:key="{{data.type}}">
+            <image src="{{item.cover}}"></image>
+            <text>{{item.title}}</text>
+            <view>
+                <image class='star-img bigstar{{item.rate[2]>=5?item.rate[0]*10+5:item.rate[0]*10}}'
+                       src="{{'../../images/ic_rating_m.png'}}"></image>
+            </view>
+            <text>{{item.rate}}</text>
+        </view>
+    </view>
+</scroll-view>

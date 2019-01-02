@@ -1,0 +1,52 @@
+.box {
+  white-space: nowrap;
+  display: flex;
+}
+.box .scroll-box {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-flow: row wrap;
+  padding: 20rpx;
+}
+.box .scroll-box .movie-box {
+  padding: 10rpx;
+  display: inline-block;
+  vertical-align: top;
+  width: calc(33.333% - 20rpx);
+  text-align: center;
+}
+.box .scroll-box .movie-box > image {
+  display: block;
+  width: 200rpx;
+  margin: auto;
+  height: 280rpx;
+}
+.box .scroll-box .movie-box > text:nth-child(2) {
+  width: 200rpx;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-top: 10rpx;
+}
+.box .scroll-box .movie-box > view {
+  margin: 0;
+  width: 130rpx;
+  height: 25rpx;
+  overflow: hidden;
+  padding: 0px;
+  display: inline-block;
+}
+.box .scroll-box .movie-box > view > image {
+  width: 100%;
+  height: 110px;
+}
+.box .scroll-box .movie-box > text:nth-child(4) {
+  display: inline-block;
+  font-size: 28rpx;
+  margin-left: 15rpx;
+}
+/*# sourceMappingURL=typeList.wxss.map */
