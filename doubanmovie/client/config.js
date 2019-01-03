@@ -28,6 +28,12 @@ var config = {
 
     // 详情页-获取不同类型电影列表
     typeList: `${host}/weapp/typeList`,
+
+    // 书影音页-列表
+    billboardList: `${host}/weapp/billboardList`,
+
+    // 书影音页-类型列表
+    billboardTypeList: `${host}/weapp/billboardTypeList`,
   }
 };
 

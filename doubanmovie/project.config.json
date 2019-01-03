@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -36,7 +36,19 @@
 				{
 					"id": -1,
 					"name": "详情页",
-					"pathName": "pages/typeList/typeList"
+					"pathName": "pages/typeList/typeList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "书影音",
+					"pathName": "pages/movie/movie",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "书影音-类型页",
+					"pathName": "pages/billboardTypeList/billboardTypeList"
 				}
 			]
 		}

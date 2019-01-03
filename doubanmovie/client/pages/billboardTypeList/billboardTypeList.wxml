@@ -1,0 +1,35 @@
+<view class="box">
+    <view class="title" style="background-image: url({{data.list[0]['cover']}})">
+        <view></view>
+        <view>
+            <text>评分最高</text>
+            <text>{{data.type}}电影榜</text>
+            <view>-2018-</view>
+        </view>
+    </view>
+    <view class="body">
+        <navigator wx:for="{{data.list}}">
+            <text>No.{{index+1}}</text>
+            <view>
+                <view>
+                    <image src="{{item.cover}}"></image>
+                    <view>
+                        <text>{{item.title}}</text>
+                        <view>
+                            <image class='star-img bigstar{{item.rate[2]>=5?item.rate[0]*10+5:item.rate[0]*10}}'
+                                   src="{{'../../images/ic_rating_m.png'}}"></image>
+                        </view>
+                        <text>{{item.rate}}</text>
+                        <text>
+                            {{item.addr}}/{{item.type}}/{{item.time}}/{{item.releaseTime}}
+                        </text>
+
+                    </view>
+                </view>
+                <view>
+                    {{item.introduction}}
+                </view>
+            </view>
+        </navigator>
+    </view>
+</view>

@@ -1,2 +1,60 @@
-<!--client/pages/movie/movie.wxml-->
-<text>client/pages/movie/movie.wxml</text>
+<view class="box">
+    <view class="top-box">
+        <navigator url="/pages/billboardTypeList/billboardTypeList?type=热门">
+            <view style="background-image: url({{data.hot[0]['cover']}})"></view>
+            <view>
+                <text class="top-box-title gold-title">2018年度热门电影榜</text>
+                <view class="top-box-body">
+                    <view>
+                        <image wx:for="{{data.hot}}" wx:key="hot" src="{{item.cover}}"></image>
+                    </view>
+                    <text>+135</text>
+                </view>
+            </view>
+        </navigator>
+        <navigator url="/pages/billboardTypeList/billboardTypeList?type=最新">
+            <view style="background-image: url({{data.new[0]['cover']}})"></view>
+            <view>
+                <text class="top-box-title">最新电影榜</text>
+                <view class="top-box-body">
+                    <view>
+                        <image wx:for="{{data.new}}" wx:key="new" src="{{item.cover}}"></image>
+                    </view>
+                    <text>+10</text>
+                </view>
+            </view>
+
+        </navigator>
+        <navigator url="/pages/billboardTypeList/billboardTypeList?type=经典">
+            <view style="background-image: url({{data.classic[0]['cover']}})"></view>
+            <view>
+                <text class="top-box-title">经典电影榜</text>
+                <view class="top-box-body">
+                    <view>
+                        <image wx:for="{{data.classic}}" wx:key="classic" src="{{item.cover}}"></image>
+                    </view>
+                    <text>+10</text>
+                </view>
+            </view>
+
+        </navigator>
+    </view>
+    <view class="bottom-box">
+        <navigator url="/pages/billboardTypeList/billboardTypeList?type={{item.type}}" wx:for="{{data.other}}"
+                   wx:key="item.type">
+            <view class="bottom-box-left">
+                <image src="{{item['list'][0]['cover']}}"></image>
+                <text>评分最高</text>
+                <text>{{item.type[item.type.length-1] == '片'||item.type[item.type.length-1] ==
+                    '分'?item.type:item.type+'片'}}
+                </text>
+            </view>
+            <view class="bottom-box-right">
+                <view wx:for="{{item.list}}" wx:for-item="child" wx:for-index="child_index" wx:key="child.id">
+                    <text>{{child_index+1}} . {{child.title}}</text>
+                    <text>{{child.rate}}</text>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</view>

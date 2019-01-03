@@ -1,0 +1,202 @@
+.bigstar100 {
+  margin-top: 0px;
+}
+.bigstar95 {
+  margin-top: -10px;
+}
+.bigstar90 {
+  margin-top: -10px;
+}
+.bigstar85 {
+  margin-top: -10px;
+}
+.bigstar80 {
+  margin-top: -20px;
+}
+.bigstar75 {
+  margin-top: -30px;
+}
+.bigstar70 {
+  margin-top: -30px;
+}
+.bigstar65 {
+  margin-top: -30px;
+}
+.bigstar60 {
+  margin-top: -40px;
+}
+.bigstar55 {
+  margin-top: -50px;
+}
+.bigstar50 {
+  margin-top: -50px;
+}
+.bigstar45 {
+  margin-top: -50px;
+}
+.bigstar40 {
+  margin-top: -60px;
+}
+.bigstar35 {
+  margin-top: -70px;
+}
+.bigstar30 {
+  margin-top: -70px;
+}
+.bigstar25 {
+  margin-top: -70px;
+}
+.bigstar20 {
+  margin-top: -80px;
+}
+.bigstar15 {
+  margin-top: -90px;
+}
+.bigstar10 {
+  margin-top: -90px;
+}
+.bigstar05 {
+  margin-top: -90px;
+}
+.bigstar00 {
+  margin-top: -100px;
+}
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+/*# sourceMappingURL=star.wxss.map */
+.box {
+  padding: 0;
+}
+.box .title {
+  width: 100%;
+  height: 380rpx;
+  text-align: center;
+  background-size: 100%;
+  position: relative;
+}
+.box .title > view {
+  font-family: '微软雅黑';
+}
+.box .title > view:nth-child(1) {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+}
+.box .title > view:nth-child(2) {
+  font-size: 40rpx;
+  color: #ffffff;
+  position: absolute;
+  z-index: 22;
+  margin-top: 200rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.box .title > view:nth-child(2) > text:nth-child(2) {
+  font-weight: bold;
+  margin-left: 10rpx;
+}
+.box .title > view:nth-child(2) > view {
+  margin-top: 20rpx;
+  font-weight: bold;
+  color: darkgrey;
+}
+.box .body {
+  background-color: #ededed;
+}
+.box .body > navigator {
+  background-color: #ffffff;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+.box .body > navigator > text:nth-child(1) {
+  padding: 8rpx 12rpx;
+  background-color: #d0d1c9;
+  font-size: 30rpx;
+  color: #ffffff;
+  margin-bottom: 20rpx;
+  border-radius: 5rpx;
+}
+.box .body > navigator > view {
+  display: flex;
+  flex-flow: column;
+  margin-top: 20rpx;
+}
+.box .body > navigator > view > view:nth-child(1) {
+  display: flex;
+}
+.box .body > navigator > view > view:nth-child(1) > image {
+  width: 200rpx;
+  height: 280rpx;
+  border-radius: 10rpx;
+}
+.box .body > navigator > view > view:nth-child(1) > view {
+  padding: 20rpx;
+  width: calc(100% - 250rpx);
+}
+.box .body > navigator > view > view:nth-child(1) > view > text:nth-child(1) {
+  font-size: 30rpx;
+  color: black;
+  display: block;
+}
+.box .body > navigator > view > view:nth-child(1) > view > text:nth-child(3) {
+  display: inline-block;
+  font-size: 28rpx;
+  margin-left: 15rpx;
+}
+.box .body > navigator > view > view:nth-child(1) > view > text:nth-child(4) {
+  font-size: 26rpx;
+  color: #b5b5b5;
+}
+.box .body > navigator > view > view:nth-child(1) > view > view:nth-child(2) {
+  margin: 0;
+  width: 130rpx;
+  height: 25rpx;
+  overflow: hidden;
+  padding: 0rpx;
+  display: inline-block;
+}
+.box .body > navigator > view > view:nth-child(1) > view > view:nth-child(2) > image {
+  width: 100%;
+  height: 110px;
+}
+.box .body > navigator > view > view:nth-child(2) {
+  margin-top: 20rpx;
+  display: block;
+  vertical-align: top;
+  padding: 10rpx;
+  height: 74rpx;
+  background-color: #f7f7f7;
+  font-size: 30rpx;
+  color: #b5b5b5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.box .body > navigator:nth-child(1) > text:nth-child(1) {
+  background-color: #ff6777;
+}
+.box .body > navigator:nth-child(2) > text:nth-child(1) {
+  background-color: #f88e57;
+}
+.box .body > navigator:nth-child(3) > text:nth-child(1) {
+  background-color: #ffc35c;
+}
+/*# sourceMappingURL=billboardTypeList.wxss.map */

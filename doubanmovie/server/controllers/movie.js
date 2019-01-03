@@ -41,4 +41,52 @@ module.exports = {
       'list': list
     }
   },
+  //书影音电影列表。
+  billboardList: async ctx => {
+    let classiclist = await DB.query('select DISTINCT * from movie_list a where type in ("经典") ORDER BY rate DESC LIMIT 0,3')
+    let hotlist = await DB.query('select DISTINCT * from movie_list a where type in ("热门") ORDER BY rate DESC LIMIT 0,3')
+    let newlist = await DB.query('select DISTINCT * from movie_list a where type in ("最新") ORDER BY rate DESC LIMIT 0,3')
+    let otherSumList = await DB.query('SELECT * FROM (select DISTINCT * from movie_list where type not in ("热门","最新","经典","可播放")) a WHERE 	2 >= (	SELECT count( * ) FROM (select DISTINCT * from movie_list where type not in ("热门","最新","经典","可播放")) b WHERE	a.type = b.type and a.id <b.id ) ORDER BY	a.type,a.rate DESC')
+    let otherList = []
+    let listMap = {}
+    if (otherSumList.length) {
+      for (let i = 0; i < otherSumList.length; i++) {
+        if (listMap[otherSumList[i]['type']]) {
+          listMap[otherSumList[i]['type']].push(otherSumList[i])
+        } else {
+          listMap[otherSumList[i]['type']] = [otherSumList[i]]
+        }
+      }
+    }
+    for (let key in listMap) {
+        otherList.push({
+          'type': key,
+          'list': listMap[key]
+        })
+    }
+    let data = {
+      'hot': hotlist,
+      'new': newlist,
+      'classic': classiclist,
+      'other': otherList
+    }
+    ctx.state.data = data
+  },
+  //书影音——类型电影列表。
+  billboardTypeList: async ctx => {
+    let data = ctx.request.body.queryData || {}
+    let list
+    let type = data.type
+    let pageIndex = data.pageIndex
+    if (type) {
+      list = await DB.query('select DISTINCT * from movie_details WHERE movieId in (select id from movie_list a where type in (?)) ORDER BY rate DESC,releaseTime DESC limit 0,?', [type, pageIndex])
+    } else {
+      list = []
+    }
+    ctx.state.data = {
+      'type': type,
+      'list': list
+    }
+  },
+
 };

@@ -35,7 +35,13 @@ router.post('/message', controllers.message.post)
 // 商品添加到购物车列表
 router.get('/movieList', controllers.movie.movieList)
 
-// GET  获取详情页电影列表。
+// post  获取详情页电影列表。
 router.post('/typeList', controllers.movie.typeList)
+
+// GET  获取书影音页电影列表。
+router.get('/billboardList', controllers.movie.billboardList)
+
+// post  获取书影音——类型电影列表。
+router.post('/billboardTypeList', controllers.movie.billboardTypeList)
 
 module.exports = router

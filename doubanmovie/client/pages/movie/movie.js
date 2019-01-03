@@ -1,17 +1,47 @@
-// client/pages/movie/movie.js
+var qcloud = require('../../vendor/wafer2-client-sdk/index');
+var config = require('../../config');
+var util = require('../../utils/util.js');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    data:{}
   },
-
+  getMovieList(){
+    wx.showLoading({
+      title: '列表加载中',
+    })
+    qcloud.request({
+      url: config.service.billboardList,
+      success:result=>{
+        wx.hideLoading()
+        if(!result.data.code){
+          this.setData({
+            data:result.data.data
+          })
+        }else{
+          wx.showToast({
+            title: '列表加载失败',
+          })
+        }
+        
+      },
+      fail:result=>{
+        wx.hideLoading();
+        wx.showToast({
+          title: '列表加载失败。',
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getMovieList()
 
   },
 
