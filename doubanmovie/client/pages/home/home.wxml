@@ -1,9 +1,9 @@
 <view class='box'>
     <view class='search-box'>
-        <view>
+        <navigator url="/pages/search/search">
             <image src='/images/search.png'></image>
             <text>搜索</text>
-        </view>
+        </navigator>
     </view>
     <view class='movie-box'>
         <view class='list-child' wx:for="{{movieList}}" wx:key="item.type">

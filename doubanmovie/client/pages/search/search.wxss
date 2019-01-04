@@ -1,0 +1,70 @@
+.search-box {
+  background-color: #41bd55;
+  padding: 20rpx;
+}
+.search-box > view {
+  border-radius: 10rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background-color: #ffffff;
+  color: #a9a9a9;
+  font-size: 34rpx;
+  display: flex;
+  align-items: center;
+}
+.search-box > view > image {
+  width: 28rpx;
+  height: 28rpx;
+  margin: 0rpx 10rpx 0rpx 20rpx;
+  display: inline-block;
+}
+.search-box > view > input {
+  flex: 1;
+  color: black;
+  font-size: 30rpx;
+}
+.body > navigator {
+  padding-bottom: 30rpx;
+  margin: 30rpx;
+  display: flex;
+  border-bottom: 1px solid lightgray;
+}
+.body > navigator:last-child {
+  border: none;
+  padding-bottom: 0rpx;
+}
+.body > navigator > image {
+  width: 135rpx;
+  height: 195rpx;
+}
+.body > navigator > view {
+  padding: 10rpx 20rpx;
+  width: calc(100% - 250rpx);
+}
+.body > navigator > view > text:nth-child(1) {
+  font-size: 30rpx;
+  color: black;
+  display: block;
+}
+.body > navigator > view > text:nth-child(3) {
+  display: inline-block;
+  font-size: 28rpx;
+  margin-left: 15rpx;
+}
+.body > navigator > view > text:nth-child(4) {
+  font-size: 24rpx;
+  color: #b5b5b5;
+}
+.body > navigator > view > view:nth-child(2) {
+  margin: 0;
+  width: 130rpx;
+  height: 25rpx;
+  overflow: hidden;
+  padding: 0rpx;
+  display: inline-block;
+}
+.body > navigator > view > view:nth-child(2) > image {
+  width: 100%;
+  height: 110px;
+}
+/*# sourceMappingURL=search.wxss.map */

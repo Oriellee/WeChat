@@ -1,0 +1,115 @@
+.box {
+  padding: 30rpx;
+  > .info-box {
+    padding-bottom: 30rpx;
+    display: flex;
+    > image {
+      width: 215rpx;
+      height: 295rpx;
+      border-radius: 10rpx;
+    }
+    > view {
+      padding: 0rpx 0 0 40rpx;
+      width: calc(~"100%" - 250rpx);
+      > text {
+        &:nth-child(1) {
+          font-size: 48rpx;
+          color: black;
+          display: block;
+        }
+        &:nth-child(3) {
+          display: inline-block;
+          font-size: 28rpx;
+          margin-left: 15rpx;
+        }
+        &:nth-child(4) {
+          font-size: 24rpx;
+          color: #b5b5b5;
+        }
+      }
+      > view:nth-child(2) {
+        margin: 0;
+        width: 130rpx;
+        height: 25rpx;
+        overflow: hidden;
+        padding: 0rpx;
+        display: inline-block;
+        > image {
+          width: 100%;
+          height: 110px;
+        }
+      }
+    }
+  }
+  > .introduction-box {
+    margin-top: 20rpx;
+    > view {
+      margin-top: 30rpx;
+      font-size: 28rpx;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      vertical-align: top;
+      text-indent: 20rpx;
+      text-align: left;
+      letter-spacing: 2rpx;
+    }
+    > text {
+      &:nth-child(1) {
+        font-size: 38rpx;
+      }
+      &:nth-child(3) {
+        font-size: 30rpx;
+        display: inline-block;
+        width: 100%;
+        text-align: right;
+        margin-right: 30rpx;
+        margin-top: 20rpx;
+        color: #c0c0c1;
+      }
+    }
+    .text-show {
+      -webkit-line-clamp: none;
+    }
+    .text-hide {
+      -webkit-line-clamp: 4;
+    }
+  }
+  > .starts-box {
+    margin-top: 40rpx;
+    > text {
+      font-size: 38rpx;
+    }
+    > scroll-view {
+      display: flex;
+      white-space: nowrap;
+      view {
+        display: inline-block;
+        margin-top: 30rpx;
+        margin-right: 20rpx;
+        > view {
+          display: flex;
+          flex-flow: column nowrap;
+          > image {
+            width: 135rpx;
+            height: 195rpx;
+            display: block;
+            border-radius: 10rpx;
+          }
+          > text:nth-child(2) {
+            width: 135rpx;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 28rpx;
+          }
+          > text:nth-child(3) {
+            font-size: 25rpx;
+            color: #c0c0c1;
+          }
+        }
+      }
+    }
+  }
+}

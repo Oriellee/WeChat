@@ -34,6 +34,12 @@ var config = {
 
     // 书影音页-类型列表
     billboardTypeList: `${host}/weapp/billboardTypeList`,
+
+    // 搜索
+    search: `${host}/weapp/search/`,
+
+    // 详情页
+    detail: `${host}/weapp/detail/`,
   }
 };
 

@@ -44,4 +44,10 @@ router.get('/billboardList', controllers.movie.billboardList)
 // post  获取书影音——类型电影列表。
 router.post('/billboardTypeList', controllers.movie.billboardTypeList)
 
+// GET  搜索电影。
+router.get('/search/:text', controllers.movie.search)
+
+// GET  电影详情页。
+router.get('/detail/:id', controllers.movie.detail)
+
 module.exports = router

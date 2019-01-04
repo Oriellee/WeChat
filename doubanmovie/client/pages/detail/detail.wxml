@@ -1,0 +1,35 @@
+<view class="box">
+    <view class="info-box">
+        <image src="{{data.cover}}"></image>
+        <view>
+            <text>{{data.title}}</text>
+            <view>
+                <image class='star-img bigstar{{data.rate[2]>=5?data.rate[0]*10+5:data.rate[0]*10}}'
+                       src="{{'../../images/ic_rating_m.png'}}"></image>
+            </view>
+            <text>{{data.rate}}</text>
+            <text>
+                {{data.addr}}/{{data.type}}/{{data.time}}/{{data.releaseTime}}
+            </text>
+        </view>
+    </view>
+    <view class="introduction-box">
+        <text>简介</text>
+        <view class="{{btnStatus==true?'text-show':'text-hide'}}">
+            {{data.introduction}}
+        </view>
+        <text bindtap='changeBtnStatus'>{{btnStatus==true?'展开':'收起'}}</text>
+    </view>
+    <view class="starts-box">
+        <text>影人</text>
+        <scroll-view scroll-x="true" class="scroll-box">
+            <view wx:for="{{data.starts}}" wx:key="item.name">
+                <view>
+                    <image src="{{item.cover}}"></image>
+                    <text>{{item.name}}</text>
+                    <text>{{item.type}}</text>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

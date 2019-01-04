@@ -89,4 +89,29 @@ module.exports = {
     }
   },
 
+  // 搜索电影。
+  search: async ctx => {
+    let searchText = ctx.params.text
+    let list
+    if (searchText) {
+      list = await DB.query('select DISTINCT * from movie_details where title like ? ORDER BY releaseTime DESC', ['%'+searchText+'%'])
+    } else {
+      list = []
+    }
+    ctx.state.data = list
+  },
+
+  // 电影详情页。
+  detail: async ctx => {
+    let id = ctx.params.id
+    let data = {}
+    let starts = []
+    if (id) {
+      data = (await DB.query('select DISTINCT * from movie_details where movieId = ?', [id]))[0]
+      starts = await DB.query('select DISTINCT * from movie_starts where movieId = ?', [id])
+    }
+    data["starts"] = starts
+    ctx.state.data = data
+  },
+
 };

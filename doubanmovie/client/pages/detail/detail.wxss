@@ -1,0 +1,112 @@
+.box {
+  padding: 30rpx;
+}
+.box > .info-box {
+  padding-bottom: 30rpx;
+  display: flex;
+}
+.box > .info-box > image {
+  width: 215rpx;
+  height: 295rpx;
+  border-radius: 10rpx;
+}
+.box > .info-box > view {
+  padding: 0rpx 0 0 40rpx;
+  width: calc(100% - 250rpx);
+}
+.box > .info-box > view > text:nth-child(1) {
+  font-size: 48rpx;
+  color: black;
+  display: block;
+}
+.box > .info-box > view > text:nth-child(3) {
+  display: inline-block;
+  font-size: 28rpx;
+  margin-left: 15rpx;
+}
+.box > .info-box > view > text:nth-child(4) {
+  font-size: 24rpx;
+  color: #b5b5b5;
+}
+.box > .info-box > view > view:nth-child(2) {
+  margin: 0;
+  width: 130rpx;
+  height: 25rpx;
+  overflow: hidden;
+  padding: 0rpx;
+  display: inline-block;
+}
+.box > .info-box > view > view:nth-child(2) > image {
+  width: 100%;
+  height: 110px;
+}
+.box > .introduction-box {
+  margin-top: 20rpx;
+}
+.box > .introduction-box > view {
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  vertical-align: top;
+  text-indent: 20rpx;
+  text-align: left;
+  letter-spacing: 2rpx;
+}
+.box > .introduction-box > text:nth-child(1) {
+  font-size: 38rpx;
+}
+.box > .introduction-box > text:nth-child(3) {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  margin-right: 30rpx;
+  margin-top: 20rpx;
+  color: #c0c0c1;
+}
+.box > .introduction-box .text-show {
+  -webkit-line-clamp: none;
+}
+.box > .introduction-box .text-hide {
+  -webkit-line-clamp: 4;
+}
+.box > .starts-box {
+  margin-top: 40rpx;
+}
+.box > .starts-box > text {
+  font-size: 38rpx;
+}
+.box > .starts-box > scroll-view {
+  display: flex;
+  white-space: nowrap;
+}
+.box > .starts-box > scroll-view view {
+  display: inline-block;
+  margin-top: 30rpx;
+  margin-right: 20rpx;
+}
+.box > .starts-box > scroll-view view > view {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.box > .starts-box > scroll-view view > view > image {
+  width: 135rpx;
+  height: 195rpx;
+  display: block;
+  border-radius: 10rpx;
+}
+.box > .starts-box > scroll-view view > view > text:nth-child(2) {
+  width: 135rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 28rpx;
+}
+.box > .starts-box > scroll-view view > view > text:nth-child(3) {
+  font-size: 25rpx;
+  color: #c0c0c1;
+}
+/*# sourceMappingURL=detail.wxss.map */
