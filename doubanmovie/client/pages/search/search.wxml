@@ -6,7 +6,7 @@
         </view>
     </view>
     <view class="body">
-        <navigator wx:for="{{data}}" wx:key='search'>
+        <navigator url="/pages/detail/detail?id={{item.movieId}}" wx:for="{{data}}" wx:key='search'>
             <image src="{{item.cover}}"></image>
             <view>
                 <text>{{item.title}}</text>

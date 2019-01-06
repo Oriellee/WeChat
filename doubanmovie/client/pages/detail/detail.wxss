@@ -98,15 +98,17 @@
   display: block;
   border-radius: 10rpx;
 }
-.box > .starts-box > scroll-view view > view > text:nth-child(2) {
+.box > .starts-box > scroll-view view > view > text {
   width: 135rpx;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+.box > .starts-box > scroll-view view > view > text:nth-child(2) {
   font-size: 28rpx;
 }
 .box > .starts-box > scroll-view view > view > text:nth-child(3) {
-  font-size: 25rpx;
+  font-size: 24rpx;
   color: #c0c0c1;
 }
 /*# sourceMappingURL=detail.wxss.map */

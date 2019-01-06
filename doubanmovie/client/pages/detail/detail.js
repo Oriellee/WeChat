@@ -10,7 +10,6 @@ Page({
    */
   data: {
     data: {},
-    id: 26925317,
     btnStatus: false
   },
   changeBtnStatus() {
@@ -52,7 +51,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.getDetail(this.data.id)
+    this.getDetail(options.id)
   },
 
   /**

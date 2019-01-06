@@ -97,16 +97,18 @@
             display: block;
             border-radius: 10rpx;
           }
-          > text:nth-child(2) {
+          >text{
             width: 135rpx;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
-            font-size: 28rpx;
-          }
-          > text:nth-child(3) {
-            font-size: 25rpx;
-            color: #c0c0c1;
+            &:nth-child(2){
+              font-size: 28rpx;
+            }
+            &:nth-child(3){
+              font-size: 24rpx;
+              color: #c0c0c1;
+            }
           }
         }
       }

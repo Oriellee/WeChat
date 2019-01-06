@@ -17,7 +17,7 @@
                 </navigator>
             </view>
             <scroll-view scroll-x="true" class='scroll-box'>
-                <view class='img-list' wx:for="{{item.list}}" wx:for-item="child" wx:for-index="child_index" wx:key="child.movieId">
+                <navigator url="/pages/detail/detail?id={{child.movieId}}" class='img-list' wx:for="{{item.list}}" wx:for-item="child" wx:for-index="child_index" wx:key="child.movieId">
                     <image src="{{child.cover}}"></image>
                     <text>{{child.title}}</text>
                     <view>
@@ -25,7 +25,7 @@
                                src="{{'../../images/ic_rating_m.png'}}"></image>
                     </view>
                     <text>{{child.rate}}</text>
-                </view>
+                </navigator>
             </scroll-view>
         </view>
     </view>

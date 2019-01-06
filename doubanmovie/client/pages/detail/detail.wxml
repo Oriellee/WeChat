@@ -18,7 +18,7 @@
         <view class="{{btnStatus==true?'text-show':'text-hide'}}">
             {{data.introduction}}
         </view>
-        <text bindtap='changeBtnStatus'>{{btnStatus==true?'展开':'收起'}}</text>
+        <text bindtap='changeBtnStatus'>{{btnStatus==true?'收起':'展开'}}</text>
     </view>
     <view class="starts-box">
         <text>影人</text>

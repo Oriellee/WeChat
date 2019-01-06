@@ -8,7 +8,7 @@
         </view>
     </view>
     <view class="body">
-        <navigator wx:for="{{data.list}}">
+        <navigator url="/pages/detail/detail?id={{item.movieId}}" wx:for="{{data.list}}">
             <text>No.{{index+1}}</text>
             <view>
                 <view>
